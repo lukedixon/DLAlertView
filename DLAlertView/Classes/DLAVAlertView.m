@@ -1347,6 +1347,11 @@ static const CGFloat DLAVAlertViewAnimationDuration = 0.3;
 		fullScreenRect = temp;
 	}
 	
+    // Fix for iOS9 split screen mode:
+    if ([[[UIApplication sharedApplication] windows] firstObject]) {
+        fullScreenRect = [[[[UIApplication sharedApplication] windows] firstObject] bounds];
+    }
+	
 	return fullScreenRect;
 }
 
